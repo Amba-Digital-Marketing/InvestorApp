@@ -16,9 +16,13 @@ class CreateCompanyTable extends Migration
         Schema::create('companies', function (Blueprint $table) {
             $table->id();
             $table->string('companyName');
-            $table->string('website');
 
-            $table->string('address');
+            $table->decimal('sharePrice', 8, 2)->nullable();
+            $table->decimal('availableShares', 8, 2)->nullable();
+            $table->decimal('noOfShares', 8, 2)->nullable();
+            $table->decimal('totalShares', 8, 2)->nullable();
+            $table->string('photo')->nullable();
+            $table->string('address')->nullable();
             $table->timestamps();
         });
     }

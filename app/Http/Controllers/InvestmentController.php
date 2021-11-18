@@ -17,5 +17,17 @@ class InvestmentController extends Controller
     return view('investments.index');
 
    }
+   public function store(){
+
+   }
+   public function create(){
+
+   }
+   public function show(){
+
+   }
+   public function destroy(){
+
+   }
 
 }

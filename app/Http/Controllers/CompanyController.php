@@ -24,12 +24,21 @@ class CompanyController extends Controller
         return view('company.create');
     }
     public function store(Request $request){
-        $this->validate(@$request,[
-            'companyName'=>'required',
 
+        request()->validate([
+            'companyName'=>'required',
+            'sharePrice'=>'required',
+            'availableShares'=>'required',
+            'noOfShares'=>'required',
+            'totalShares'=>'required'
         ]);
-        $input=$request->all();
-        return redirect()->route('')->with('success','Company Created Successfully');
+
+        Company::create($request->all());
+
+     //   return redirect()->route('company.index')->with('success','Product created successfully.');
+
+
+        return redirect()->route('company.index')->with('success','Company Created Successfully');
     }
     public function show (Company $company){
 
@@ -47,8 +56,8 @@ class CompanyController extends Controller
         return redirect()->route('company.index')->with('success', 'Company Updated Successfully');
     }
     public function destroy(Company $company){
-$company->delete();
-return redirect()->route('company.index')->with('success','company deleted successfully')
+        $company->delete();
+        return redirect()->route('company.index')->with('success','company deleted successfully');
 
     }
 }

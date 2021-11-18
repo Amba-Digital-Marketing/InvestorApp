@@ -3,6 +3,20 @@
 @section('content')
 <div class="content">
     <div class="container-fluid">
+
+        <div class="row">
+
+            @if ($errors->any())
+            <div class="alert alert-danger">
+                <strong>Whoops!</strong> Something went wrong.<br><br>
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+        </div>
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
@@ -12,8 +26,12 @@
                             <h4 class="card-title"> Create Investor</h4>
                             </div>
 
+
+
                     <div class="card-body">
-                        <form>
+                        {!! Form::open(array('route' => 'investors.store','method'=>'POST')) !!}
+
+                            @csrf
                             <div class="row">
                                 <div class="col">
                                 </div>
@@ -28,13 +46,13 @@
                                 <div class="col">
                                     <div class="form-group">
                                         <label> First Name</label>
-                                        <input  class="form-control"name ="firstname" placeholder="."/>
+                                        <input  class="form-control"name ="firstName" placeholder="."/>
                                     </div>
                                 </div>
                                 <div class="col">
                                     <div class="form-group">
                                         <label> Last Name</label>
-                                        : <input  class="form-control" name ="lastname" placeholder="."/>
+                                        : <input  class="form-control" name ="lastName" placeholder="."/>
                                     </div>
                                 </div>
                             </div>
@@ -42,7 +60,7 @@
                                 <div class="col">
                                     <div class="form-group">
                                        <label> Email</label>
-                                        <input  class="form-control" placeholder="sample@ sample.com"/>
+                                        <input   name="email" class="form-control" placeholder="sample@ sample.com"/>
                                     </div>
 
 
@@ -63,26 +81,29 @@
                                 <div class="col">
                                     <div class="form-group">
                                         <label>Password</label>
-                                        <input class="form-control"name="phone" placeholder=""/>
+                                        <input class="form-control"name="password" placeholder=""/>
                                     </div>
                                 </div>
                                 <div class="col">
                                     <div class="form-group">
                                         <label>Confirm Password</label>
-                                        <input class="form-control"name="phone" placeholder=""/>
+                                        <input class="form-control"name="confPassword" placeholder=""/>
                                     </div>
                                 </div>
                             </div>
+                            <div class="row">
+                                <div class="col">
+                                    <button  class="btn btn-primary">Create Investor</button>
+                                </div>
+                            </div>
 
-                        </form>
+                            {!! Form::close() !!}
 
                     </div>
                     <div class="card-footer">
 
                     </div>
                 </div>
-
-
             </div>
         </div>
     </div>

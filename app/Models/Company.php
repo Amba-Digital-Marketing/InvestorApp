@@ -10,7 +10,11 @@ class Company extends Model
     use HasFactory;
     protected $fillable = [
         'companyName',
-        'address',
-        'website',
+        'sharePrice',
+        'availableShares',
+        'noOfShares',
+        'totalShares',
+        'photo',
+
     ];
 }
