@@ -28,7 +28,7 @@
 
 
           <li class="nav-item">
-            <a class="nav-link" href="{{ route('investment.index') }}">
+            <a class="nav-link" href="{{ route('investments.index') }}">
               <i class="material-icons">dashboard</i>
                 <p>{{ __('Manage Investments') }}</p>
             </a>

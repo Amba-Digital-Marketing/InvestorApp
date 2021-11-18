@@ -14,7 +14,7 @@ class InvestmentController extends Controller
          $this->middleware('permission:investment-delete', ['only' => ['destroy']]);
     }
    public function index(){
-    return view('investor.index');
+    return view('investments.index');
 
    }
 
