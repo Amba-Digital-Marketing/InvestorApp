@@ -23,4 +23,32 @@ class CompanyController extends Controller
     public function create(){
         return view('company.create');
     }
+    public function store(Request $request){
+        $this->validate(@$request,[
+            'companyName'=>'required',
+
+        ]);
+        $input=$request->all();
+        return redirect()->route('')->with('success','Company Created Successfully');
+    }
+    public function show (Company $company){
+
+        return view('company.show',compact('company'));
+
+
+    }
+    public function edit(Company $company){
+        return view('company.edit',compact('company'));
+    }
+
+    public function update(Request $request,Company $company){
+        request()->validate(['companyName'=>'required']);
+        $company->update($request->all());
+        return redirect()->route('company.index')->with('success', 'Company Updated Successfully');
+    }
+    public function destroy(Company $company){
+$company->delete();
+return redirect()->route('company.index')->with('success','company deleted successfully')
+
+    }
 }
